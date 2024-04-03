@@ -1,0 +1,21 @@
+{
+    "name": "provaphp/prova-php-entrevista",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Provaphp\\ProvaPhpEntrevista\\": "App/",
+            "Connection\\" : "Connection"
+        },
+        "files": [
+            
+            
+        ]
+    },
+    "authors": [
+        {
+            "name": "Lucas",
+            "email": "lmc.lucas90@gmail.com"
+        }
+    ],
+    "require": {}
+}
