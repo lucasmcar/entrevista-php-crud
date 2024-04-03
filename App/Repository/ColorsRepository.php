@@ -24,11 +24,7 @@ class ColorsRepository
         return $this->dao->select();
     }
 
-    /*public function getOne($id)
-    {
-        return $this->dao->selectOne($id);
-    }*/
-
+  
     public function destroy($id)
     {
         return $this->dao->delete($id);

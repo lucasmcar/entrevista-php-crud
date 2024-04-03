@@ -55,4 +55,14 @@ class UserColorsDao
         $userColors = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         return $userColors;
     }
+
+    public function update($id, $id_color)
+    {
+        $query = "UPDATE user_colors SET color_id = :id_color, user_id = :u_id  WHERE user_id = :user_id";
+        $stmt = $this->con->getConnection()->prepare($query);
+        $stmt->bindParam(':user_id', $id, \PDO::PARAM_INT);
+        $stmt->bindParam(':u_id', $id, \PDO::PARAM_INT);
+        $stmt->bindParam(':id_color', $id_color, \PDO::PARAM_INT);
+        return $stmt->execute();
+    }
 }

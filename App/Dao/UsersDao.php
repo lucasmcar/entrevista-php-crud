@@ -52,11 +52,13 @@ class UsersDao
         return $stmt->execute();
     }
 
-    public function update($id)
+    public function update($id, $name, $email)
     {
-        $query = "UPDATE users SET name, email WHERE id = :id";
+        $query = "UPDATE users SET name=:name, email=:email  WHERE id =:id";
         $stmt = $this->con->getConnection()->prepare($query);
         $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
+        $stmt->bindParam(':name', $name, \PDO::PARAM_STR);
+        $stmt->bindParam(':email', $email, \PDO::PARAM_STR);
         return $stmt->execute();
     }
 }

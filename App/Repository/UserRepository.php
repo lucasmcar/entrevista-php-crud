@@ -33,8 +33,8 @@ class UserRepository
         return $this->dao->delete($id);
     }
 
-    public function update($id)
+    public function update($id, $name, $email)
     {
-        return $this->dao->update($id);
+        return $this->dao->update($id, $name, $email);
     }
 }

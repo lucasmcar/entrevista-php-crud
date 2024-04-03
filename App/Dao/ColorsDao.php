@@ -32,8 +32,5 @@ class ColorsDao
 
     }
 
-    public function update($id)
-    {
-        
-    }
+   
 }

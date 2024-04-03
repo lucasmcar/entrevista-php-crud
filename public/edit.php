@@ -1,6 +1,9 @@
 <?php
+    
+    $action = filter_input(INPUT_GET, 'action');
+    $id = filter_input(INPUT_GET, 'id');
 
-   if(!isset($_GET['action']) && !isset($_GET['id'])){
+   if(!isset($action) && !isset($id)){
     header("location: ../index.php");
    }
 ?>
@@ -22,7 +25,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="../public/index.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"></a>
@@ -44,7 +47,7 @@
                 <label for="txtUserName">Nome:</label>
                 <input type="text" name="userName" id="txtUserNameEdit" class="form-control" value="<?php echo $user['name']; ?>">
             </div>
-            <input type="hidden" name="idUserEdit" value="<?= $user['id'] ?>">
+            <input type="hidden" name="txtIdUserEdit" value="<?= $user['id']; ?>">
             <div class="form-group">
                 <label for="txtUserEmail">Email:</label>
                 <input type="text" name="userEmail" id="txtUserEmailEdit" class="form-control" value="<?php echo $user['email']; ?>">
@@ -53,22 +56,22 @@
             <?php  
             
             for($i = 0; $i < count($colors); $i++) { 
-                
-                if(isset($userColors[$i]['color_id']) && $userColors[$i]['color_id'] == $colors[$i]['id']){
+                $checked = "";
+                if($userColors[$i]['color_id'] == $colors[$i]['id']){
                     $checked = "checked";
             ?>
                 
                 <div class="form-check">
-                    <input class="form-check-input" <?= $checked; ?> name="colors[]" type="checkbox" value="<?php echo $colors[$i]['id'] ?>" id="flexCheckDefault">
+                    <input class="form-check-input" <?= $checked; ?> name="colorsEdit[]" type="checkbox" value="<?php echo $colors[$i]['id']; ?>" id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
                         <?php echo $colors[$i]['name']; ?>
                     </label>
                 </div>
             <?php  } else {  
-                $checked = "";?>
+                ?>
                 <div class="form-check">
                     
-                    <input class="form-check-input" <?= $checked; ?> name="colors[]" type="checkbox" value="" id="flexCheckDefault">
+                    <input class="form-check-input" <?= $checked; ?> name="colorsEdit[]" type="checkbox" value="<?php echo $colors[$i]['id']; ?>" id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
                         <?php echo $colors[$i]['name']; ?>
                     </label>

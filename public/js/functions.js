@@ -21,8 +21,11 @@ function saveUser(){
     }
 
     checkColors.forEach((checkbox) =>{
+      if(checkbox.checked){
         data[checkbox.name] = data[checkbox.name] || [];
         data[checkbox.name].push(checkbox.value);
+      }
+        
     });
 
     fetch('../requests/sendUser.php', {
@@ -43,56 +46,20 @@ function saveUser(){
     .catch(error => error);
 }
 
-document.querySelector("input[type='checkbox'][name='colors[]']").addEventListener("click", function() {
-    // Obter todos os checkboxes
-    let checkboxes = document.querySelectorAll("input[type='checkbox'");
-    let values = [];
-  
-    // Iterar sobre os checkboxes e adicionar os valores marcados ao array values
-    checkboxes.forEach(function(checkbox) {
-      if (checkbox.checked) {
-        values.push(checkbox.value);
-      }
-    });
-  
-    // Enviar os valores marcados para o servidor
-    sendColors(values);
-  });
-  
-
-  function sendColors(values) {
-    fetch('../requests/getUser.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ values: values }),
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Checkbox values successfully sent to the server:', data);
-    })
-    .catch(error => {
-      console.error('There was an error sending the checkbox values:', error);
-    });
-  }
 
 function updateUser()
 {
     var msg = document.querySelector("#msg");
     var nome = document.querySelector("#txtUserNameEdit").value;
     var email = document.querySelector("#txtUserEmailEdit").value;
-    var checkColors = document.querySelectorAll("input[type='checkbox'][name='colors[]']:checked");
+    var id = document.querySelector("input[type='hidden'][name='txtIdUserEdit']").value;
+    var checkColors = document.querySelectorAll("input[type='checkbox'][name='colorsEdit[]']:checked");
 
 
     let data = {
         nome,
         email,
+        id,
         checkColors
     }
 

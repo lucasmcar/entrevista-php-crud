@@ -1,8 +1,10 @@
 <?php
+    $action = filter_input(INPUT_GET, 'action');
+    $id = filter_input(INPUT_GET, 'id');
 
-   if(!isset($_GET['action']) && !isset($_GET['id'])){
+    if(!isset($action) && !isset($id)){
     header("location: ../index.php");
-   }
+    }
 ?>
 <html lang="en">
 <head>
