@@ -16,6 +16,12 @@ $id = filter_input(INPUT_GET, 'id');
 
 if($action == 'delete'){
     $repo = new UserRepository();
+    $repoUc = new UserColorsRepository();
+    $colorsUser = $repoUc->getAllById($id);
+    foreach($colorsUser as $key => $value){
+        $repoUc->destroy($value['user_id']);
+    }
+    
     $repo->destroy($id);
     header('location: ../public/index.php');
 }
@@ -32,7 +38,14 @@ if($action == 'edit'){
 if($action == 'details')
     $userColorsRepo = new UserColorsRepository();
     $uColors = $userColorsRepo->getUserColors($id);
-    require '../public/details.php';
+    if(!empty($uColors)){
+        require '../public/details.php';
+    } else {
+        $repo = new UserRepository();
+        $userData = $repo->getOne($id);
+        require '../public/details.php';
+    }
+    
     exit;
 ?>
 

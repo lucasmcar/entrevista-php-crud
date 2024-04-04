@@ -28,8 +28,13 @@ class UserColorsRepository
         return $this->dao->selectUserColors($id);
     }
 
-    public function update($id, $id_color)
+    public function update($id_color)
     {
-        return $this->dao->update($id, $id_color);
+        return $this->dao->update($id_color);
+    }
+
+    public function destroy($id)
+    {
+        return $this->dao->delete($id);
     }
 }

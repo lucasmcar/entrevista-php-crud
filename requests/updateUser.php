@@ -16,14 +16,14 @@ var_dump($user);
 $name = $user['nome'];
 $email = $user['email'];
 $id = $user['id'];
-$user['colorsEdit[]'];
+
 
 $userRepo = new UserRepository();
 
+$userRepo->update($id, $name, $email);
+
 $userColorsRepo = new UserColorsRepository();
-foreach($user['colorsEdit[]'] as $key => $color){
-    $userColorsRepo->update($id, $color);
+foreach($user['ckValues'] as $key => $color){
+    $userColorsRepo->update($color);
     
 }
-
-

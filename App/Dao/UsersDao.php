@@ -3,7 +3,6 @@
 namespace Provaphp\ProvaPhpEntrevista\Dao;
 
 use Provaphp\ProvaPhpEntrevista\Connection\Connection;
-use Provaphp\ProvaPhpEntrevista\Vo\UserVo;
 
 class UsersDao
 {
@@ -24,7 +23,6 @@ class UsersDao
         if($stmt->execute()){
             return $this->con->getConnection()->lastInsertId();
         }
-
     }
 
     public function selectOne($id)

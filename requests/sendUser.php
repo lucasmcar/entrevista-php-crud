@@ -28,7 +28,7 @@ $userRepo = new UserRepository();
 $lastInsertId = $userRepo->create($name, $email);
 
 $userColorsRepo = new UserColorsRepository();
-foreach($user['colors[]'] as $key => $color){
+foreach($user['ckValues'] as $key => $color){
     $userColorsRepo->create($lastInsertId, $color);
     
 }

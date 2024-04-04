@@ -3,7 +3,6 @@
 namespace Provaphp\ProvaPhpEntrevista\Dao;
 
 use Provaphp\ProvaPhpEntrevista\Connection\Connection;
-use Provaphp\ProvaPhpEntrevista\Vo\UserVo;
 
 class UserColorsDao
 {
@@ -21,7 +20,7 @@ class UserColorsDao
         $stmt = $this->con->getConnection()->prepare($query);
         $stmt->bindParam(':user_id', $userId, \PDO::PARAM_INT);
         $stmt->bindParam(':color_id', $colorId, \PDO::PARAM_INT);
-        $stmt->execute();
+        return $stmt->execute();
     }
 
     public function selectAllById($id) 
@@ -37,10 +36,10 @@ class UserColorsDao
 
     public function delete($id)
     {
-        $query = "DELETE FROM user_color WHERE color_id = :id";
+        $query = "DELETE FROM user_colors WHERE user_id = :id";
         $stmt = $this->con->getConnection()->prepare($query);
         $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
-        $stmt->execute();
+        return $stmt->execute();
     }
 
     public function selectUserColors($id)
@@ -58,10 +57,9 @@ class UserColorsDao
 
     public function update($id, $id_color)
     {
-        $query = "UPDATE user_colors SET color_id = :id_color, user_id = :u_id  WHERE user_id = :user_id";
+        $query = "UPDATE user_colors SET color_id = :id_color  WHERE user_id = :user_id";
         $stmt = $this->con->getConnection()->prepare($query);
         $stmt->bindParam(':user_id', $id, \PDO::PARAM_INT);
-        $stmt->bindParam(':u_id', $id, \PDO::PARAM_INT);
         $stmt->bindParam(':id_color', $id_color, \PDO::PARAM_INT);
         return $stmt->execute();
     }

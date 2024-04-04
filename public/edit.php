@@ -1,4 +1,6 @@
 <?php
+    error_reporting(0);
+    ini_set("display_errors", 0 );
     
     $action = filter_input(INPUT_GET, 'action');
     $id = filter_input(INPUT_GET, 'id');
@@ -19,30 +21,11 @@
     <nav class="navbar bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" href="../public/index.php">Home</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../public/index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
     <div class="container">
         <h2>Editar Usuário:</h2>
-        <form method="post" action="">
+        <form method="post">
             <div class="form-group">
                 <label for="txtUserName">Nome:</label>
                 <input type="text" name="userName" id="txtUserNameEdit" class="form-control" value="<?php echo $user['name']; ?>">

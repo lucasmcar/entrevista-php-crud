@@ -14,11 +14,6 @@ class ColorsDao
         $this->con = new Connection();
     }
 
-    public function insert()
-    {
-        $query = "INSERT INTO colors (name) VALUES (:name)";
-    }
-
     public function select()
     {
         $query = "SELECT * FROM colors";
@@ -27,10 +22,7 @@ class ColorsDao
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function delete($id)
-    {
-
-    }
+  
 
    
 }

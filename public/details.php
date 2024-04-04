@@ -17,39 +17,23 @@
     <nav class="navbar bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" href="../index.php">Home</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
     <div class="container">
 
     <h3 class="mt-2 mb-2">Detalhes</h3>
-    <p>Nome: <?= $uColors[0]['user_name']; ?></p>
-    <p>Email: <?= $uColors[0]['email']; ?></p>
+    <p>Nome: <?= !empty($uColors[0]['user_name']) ? $uColors[0]['user_name']: $userData['name']; ?></p>
+    <p>Email: <?= !empty($uColors[0]['email']) ? $uColors[0]['email'] : $userData['name'] ; ?></p>
 
     <h4>Cores vinculadas</h4>
     
     <ul class="list-group">
-        <?php foreach($uColors as $key => $value) { ?>
-            <li class="list-group-item" style="color: <?= $value['color_name'];?>;"><?= $value['color_name'];?></li>
-        <?php } ?>
+        <?php if(!empty($uColors[0])) {  ?>
+            <?php foreach($uColors as $key => $value) { ?>
+                <li class="list-group-item" style="color: <?= $value['color_name'];?>;"><?= $value['color_name'];?></li>
+            <?php }}  else {?>
+                <div class="alert alert-warning">Não há cores vinculadas para este usuário!</div>    
+            <?php } ?>
     </ul>
     
     </div>
